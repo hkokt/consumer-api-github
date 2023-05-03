@@ -8,6 +8,7 @@ public class Repository {
 	private int id;
 	private String node_id;
 	private String name;
+	private String full_name;
 	private User owner;
 	private String html_url;
 	private String default_branch;
@@ -17,9 +18,9 @@ public class Repository {
 
 	@Override
 	public String toString() {
-		return "\n\nDADOS DO REPOSITÓRIO:\n\nId:" + id + "\nNome: " + name + "\nDono: " + owner.getLogin()
-				+ "\nLink: " + html_url + "\nBranch padrão: " + default_branch + "\nVisibilidade: " + visibility
-				+ "\nLinguagem: " + language + "\nUrl ssh: " + ssh_url + "\n\n";
+		return "\n\nDADOS DO REPOSITÓRIO:\n\nId:" + id + "\nNome: " + name + "\nNome completo:" + full_name + "\nDono: "
+				+ owner.getLogin() + "\nLink: " + html_url + "\nBranch padrão: " + default_branch + "\nVisibilidade: "
+				+ visibility + "\nLinguagem: " + language + "\nUrl ssh: " + ssh_url + "\n\n";
 	}
 
 	public int getId() {
@@ -56,5 +57,9 @@ public class Repository {
 
 	public String getSsh_url() {
 		return ssh_url;
+	}
+
+	public String getFull_name() {
+		return full_name;
 	}
 }

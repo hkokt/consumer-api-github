@@ -30,8 +30,8 @@ public class ConsumerController {
 		return response.getBody();
 	}
 
-	public Repository getRepositoryFromGithub(String username, String repoName) throws HttpClientErrorException {
-		ResponseEntity<Repository> repo = restTemplate.getForEntity(new Endpoint(username).toRepository(repoName),
+	public Repository getRepositoryFromGithub(String repoName) throws HttpClientErrorException {
+		ResponseEntity<Repository> repo = restTemplate.getForEntity(new Endpoint().toRepository(repoName),
 				Repository.class);
 		return repo.getBody();
 	}

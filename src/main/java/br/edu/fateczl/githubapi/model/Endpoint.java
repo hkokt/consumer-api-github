@@ -10,6 +10,10 @@ public class Endpoint {
 		this.user = user;
 	}
 
+	public Endpoint() {
+
+	}
+
 	public String toUser() {
 		return buildUri("users/" + user);
 	}
@@ -20,7 +24,7 @@ public class Endpoint {
 	}
 
 	public String toRepository(String repo) {
-		return buildUri("repos/" + user + "/" + repo);
+		return buildUri("repos/" + repo);
 	}
 
 	private String buildUri(String path) {
