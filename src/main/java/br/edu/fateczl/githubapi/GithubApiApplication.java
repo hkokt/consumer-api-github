@@ -29,7 +29,7 @@ public class GithubApiApplication {
 				switch (choose.toUpperCase().charAt(0)) {
 
 				case 'U':
-					System.err.println("Digite o usuário que deseja ver os dados:");
+					System.out.println("Digite o usuário que deseja ver os dados:");
 					data = sc.next();
 
 					try {
