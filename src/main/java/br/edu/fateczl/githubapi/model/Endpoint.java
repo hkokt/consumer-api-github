@@ -4,11 +4,22 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 public class Endpoint {
 
-	public String toUser(String user) {
+	private String user;
+
+	public Endpoint(String user) {
+		this.user = user;
+	}
+
+	public String toUser() {
 		return buildUri("users/" + user);
 	}
 
-	public String toRepository(String user, String repo) {
+	public String toRepositories() {
+		return buildUri("/users/" + user + "/repos");
+
+	}
+
+	public String toRepository(String repo) {
 		return buildUri("repos/" + user + "/" + repo);
 	}
 

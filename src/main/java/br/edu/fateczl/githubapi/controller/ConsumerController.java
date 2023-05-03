@@ -1,5 +1,10 @@
 package br.edu.fateczl.githubapi.controller;
 
+import java.util.List;
+
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -11,15 +16,24 @@ import br.edu.fateczl.githubapi.model.User;
 @Controller
 public class ConsumerController {
 
+	private final RestTemplate restTemplate = new RestTemplate();
+
 	public User getUserFromGithub(String username) throws HttpClientErrorException {
-		User user = new RestTemplate().getForObject(new Endpoint().toUser(username), User.class);
-		return user;
+		ResponseEntity<User> user = restTemplate.getForEntity(new Endpoint(username).toUser(), User.class);
+		return user.getBody();
+	}
+
+	public List<Repository> getRepositoriesFromUserGithub(String username) throws HttpClientErrorException {
+		ResponseEntity<List<Repository>> response = restTemplate.exchange(new Endpoint(username).toRepositories(),
+				HttpMethod.GET, null, new ParameterizedTypeReference<List<Repository>>() {
+				});
+		return response.getBody();
 	}
 
 	public Repository getRepositoryFromGithub(String username, String repoName) throws HttpClientErrorException {
-		Repository repo = new RestTemplate().getForObject(new Endpoint().toRepository(username, repoName),
+		ResponseEntity<Repository> repo = restTemplate.getForEntity(new Endpoint(username).toRepository(repoName),
 				Repository.class);
-		return repo;
+		return repo.getBody();
 	}
 
 }

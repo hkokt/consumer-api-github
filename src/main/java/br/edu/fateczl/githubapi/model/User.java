@@ -11,7 +11,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "\n\nDADOS ENCONSTRADOS DO USUÁRIO:\n\nLogin: " + login + "\nNome: " + name + "\nEmpresa: " + company
+		return "\n\nDADOS DO USUÁRIO:\n\nLogin: " + login + "\nNome: " + name + "\nEmpresa: " + company
 				+ "\nLocalização: " + location + "\nQtd. seguidores: " + followers + "\nQtd. repositórios públicos: "
 				+ public_repos + "\n\n";
 	}
